@@ -53,8 +53,8 @@ python nex_fna.py
 #COMBINED.nex , containing the concatenated MSA in nexus format with charset partitions
 #COMINBED.phy , containing the concatenated MSA in phylip format
 
-#run the final script to convert the nexus charset into a RAxML partition format:
+#run the final script to convert the nexus charset into a RAxML partition format, providing the input as the nexus file to convert:
 
-./part_converter.sh
+./part_converter.sh COMBINED.nex
 
 #Outputs written: raxml_partition.txt , containing partition information in RAxML format.
