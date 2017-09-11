@@ -1,14 +1,38 @@
+# Universal Single Copy Ortholog ALIGNER
 This is a series of scripts that will accept BUSCO results directories and output a multisequence alignment (MSA) representing all orthologs present in some threshold of genomes.  The script leverages the OrthoDB catalogs and BUSCO analyses.
 
 Future iterations will optionally trim MSAs.
 
-Dependencies:  
+Dependencies:   
 BUSCO (or the results directories from BUSCO)    
 MAFFT  
 Python 2.7
     Biopython
     Matplotlib  
+## Description of each script  
+In order of use, I provide a short description of each script.  
 
+### cpdirs.sh
+Copies universal single copy orthologs from each BUSCO results directory provided in input.txt
+Basic usage: cpdirs.sh input.txt  
+  
+### concat.py  
+Determines single copy orthologs present in a genome beyond some user specified threshold.  
+Basic usage: python concat.py 0.90  
+  
+### usco_align.sh  
+Aligns single copy orthologs passing the threshold specified in concat.py with MAFFT.  Must include the original input.txt file from cpdirs.sh.  MAFFT installation location must be specified (or inherited from environment)
+Basic usage: usco_align.sh  
+  
+### nex_fna.py 
+Utilized Biopython modules to concetnate ortholog alignments into a multisequence alignment, outputting both nexus and phylip files.
+Basic usage: python nex_fa.py  
+  
+### part_converter.sh 
+A script that extracts partition information from a nexus file charset with sed.
+Basic usage: part_converter.sh COMBINED.nex  
+  
+## An Example USCO ALIGN Run
 An example run of the scripts is below:  
 
 #these scripts require Biopython and matplotlib, along with a *NIX operating system.  Of course  
