@@ -11,51 +11,51 @@ Python 2.7
 
 An example run of the scripts is below:  
 
-#these scripts require Biopython and matplotlib, along with a *NIX operating system.  Of course
-#they also rely on BUSCO results directories!
-#cpdirs copies single copy orthologs and the tsv of ortholog presence/absence from the results 
-#directories defined in sets_r.txt .  These results directories should be presented as below, 
-#without a trailing slash:
+#these scripts require Biopython and matplotlib, along with a *NIX operating system.  Of course  
+#they also rely on BUSCO results directories!  
+#cpdirs copies single copy orthologs and the tsv of ortholog presence/absence from the results   
+#directories defined in sets_r.txt .  These results directories should be presented as below,   
+#without a trailing slash:  
 
-#/my/path/to/busco/run_results1
-#/my/path/to/busco/run_results2
+#/my/path/to/busco/run_results1  
+#/my/path/to/busco/run_results2  
+  
+./cpdirs.sh sets_r.txt  
+  
+#Outputs written: One directory for each genome, containing single copy orthologs and the tsv  
+#that defines presence or absence of orthologs in the BUSCO catalog.  
+  
+#next we use concat.py to choose a set of orthologs that pass some threshold for inclusion in the msa.  
+#concat.py must be run from the parent directory of the USCO sequences and .tsv files, that is, in the   
+#same directory in which cpdirs.sh was run!  
+  
+#concat.py takes a single argument: the proportion of genomes in which a USCO must be present to be #returned.  
+  
+python concat.py 0.90  
+  
+#Outputs written:  
+#merged.csv , A csv containing the concatenated BUSCO catalogs 
+#usco_presence.png , a histogram of usco presence in the selected genomes. 
+#threshold_uscos.txt , the list of uscos passing the specified threshold. 
+  
+#usco_align then aligns the set of uscos defined by concat.py with mafft. usco_align.sh will take the same input as cpdirs.  
+#ADJUST MAFFT DIRECTORY IN THE SCRIPT!  
+ 
+./usco_align.sh sets_r.txt  
+  
+#Outputs written: Alignments for each usco in fasta format (but with .phy extension)  
 
-./cpdirs.sh sets_r.txt
-
-#Outputs written: One directory for each genome, containing single copy orthologs and the tsv
-#that defines presence or absence of orthologs in the BUSCO catalog.
-
-#next we use concat.py to choose a set of orthologs that pass some threshold for inclusion in the msa.
-#concat.py must be run from the parent directory of the USCO sequences and .tsv files, that is, in the 
-#same directory in which cpdirs.sh was run!
-
-#concat.py takes a single argument: the proportion of genomes in which a USCO must be present to be #returned.
-
-python concat.py 0.90
-
-#Outputs written: 
-#merged.csv , A csv containing the concatenated BUSCO catalogs
-#usco_presence.png , a histogram of usco presence in the selected genomes.
-#threshold_uscos.txt , the list of uscos passing the specified threshold.
-
-#usco_align then aligns the set of uscos defined by concat.py with mafft. usco_align.sh will take the same input as cpdirs.
-#ADJUST MAFFT DIRECTORY IN THE SCRIPT! 
-
-./usco_align.sh sets_r.txt
-
-#Outputs written: Alignments for each usco in fasta format (but with .phy extension)
-
-#Run a Python script to create the MSA, which is written both as a nexus file, and as a phylip file.
-
-python nex_fna.py
-
-#Outputs written: 
-#Alignments for each USCO as .nex
-#COMBINED.nex , containing the concatenated MSA in nexus format with charset partitions
-#COMINBED.phy , containing the concatenated MSA in phylip format
-
-#run the final script to convert the nexus charset into a RAxML partition format, providing the input as the nexus file to convert:
-
-./part_converter.sh COMBINED.nex
-
-#Outputs written: raxml_partition.txt , containing partition information in RAxML format.
+#Run a Python script to create the MSA, which is written both as a nexus file, and as a phylip file.  
+  
+python nex_fna.py  
+  
+#Outputs written:  
+#Alignments for each USCO as .nex  
+#COMBINED.nex , containing the concatenated MSA in nexus format with charset partitions  
+#COMINBED.phy , containing the concatenated MSA in phylip format  
+  
+#run the final script to convert the nexus charset into a RAxML partition format, providing the input as the nexus file to convert:  
+  
+./part_converter.sh COMBINED.nex  
+  
+#Outputs written: raxml_partition.txt , containing partition information in RAxML format.  
