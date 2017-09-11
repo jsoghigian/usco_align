@@ -2,8 +2,8 @@ This is a series of scripts that will accept BUSCO results directories and outpu
 
 Future iterations will optionally trim MSAs.
 
-Dependencies:
-BUSCO (or the results directories from BUSCO)  
+Dependencies:  
+BUSCO (or the results directories from BUSCO)    
 MAFFT  
 Python 2.7
     Biopython
