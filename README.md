@@ -1,4 +1,4 @@
-# Universal Single Copy Ortholog ALIGNER
+# Universal Single Copy Ortholog Aligner
 This is a series of scripts that will accept BUSCO results directories and output a multisequence alignment (MSA) representing all orthologs present in some threshold of genomes.  The script leverages the OrthoDB catalogs and BUSCO analyses.
 
 Future iterations will optionally trim MSAs.
