@@ -3,12 +3,13 @@ This is a series of scripts that will accept BUSCO results directories and outpu
 Future iterations will optionally trim MSAs.
 
 Dependencies:
-BUSCO (or the results directories from BUSCO)
-MAFFT
-Biopython
-Matplotlib
+BUSCO (or the results directories from BUSCO)  
+MAFFT  
+Python 2.7
+    Biopython
+    Matplotlib  
 
-An example run of the scripts is below:
+An example run of the scripts is below:  
 
 #these scripts require Biopython and matplotlib, along with a *NIX operating system.  Of course
 #they also rely on BUSCO results directories!
