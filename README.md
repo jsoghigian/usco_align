@@ -6,9 +6,10 @@ Future iterations will optionally trim MSAs.
 Dependencies:   
 BUSCO (or the results directories from BUSCO)    
 MAFFT  
-Python 2.7
-    Biopython
-    Matplotlib  
+trimAl  
+Python 2.7  
+    Biopython  
+    Matplotlib    
 ## Description of each script  
 In order of use, I provide a short description of each script.  
 
@@ -21,7 +22,7 @@ Determines single copy orthologs present in a genome beyond some user specified 
 Basic usage: python concat.py 0.90  
   
 ### usco_align.sh  
-Aligns single copy orthologs passing the threshold specified in concat.py with MAFFT.  Must include the original input.txt file from cpdirs.sh.  MAFFT installation location must be specified (or inherited from environment)
+Aligns single copy orthologs passing the threshold specified in concat.py with MAFFT.  Trims all input alignments with trimAl -automatic1. Must include the original input.txt file from cpdirs.sh.  MAFFT and trimAl installation location must be specified in the script (or inherited from environment)
 Basic usage: usco_align.sh  
   
 ### nex_fna.py 
