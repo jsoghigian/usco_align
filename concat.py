@@ -40,7 +40,7 @@ for filename in to_merge:
     # change the column names so they won't collide during concatenation
     df.columns = [filename + str(cname) for cname in df.columns]
     dfs.append(df)
-#threshold = float(sys.argv[1])
+threshold = float(sys.argv[1])
 # concatenate them horizontally
 merged = pd.concat(dfs,axis=1)
 # the merged csv - will be large!
