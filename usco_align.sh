@@ -21,6 +21,6 @@ for usco in `cat threshold_uscos.txt`
             cd uscos/${usco}
     cat * > ${usco}.fa
     /ycga-gpfs/home/js3633/mafft-7.310/scripts/mafft --auto ${usco}.fa > ../aligns/aligns_raw/${usco}.fna
-    /ycga-gpfs/home/js3633/trimAl/source/trimal -in ../aligns/_raw/${usco}.fna -out ../aligns/aligns_trim/${usco}_trim.fna -htmlout ../aligns/reports/${usco}.html -automated1
+    /ycga-gpfs/home/js3633/trimAl/source/trimal -in ../aligns/aligns_raw/${usco}.fna -out ../aligns/aligns_trim/${usco}_trim.fna -htmlout ../aligns/reports/${usco}.html -automated1
     cd ../..
 done
