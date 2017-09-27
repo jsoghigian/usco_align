@@ -4,7 +4,7 @@
 mkdir uscos
 mkdir uscos/aligns
 mkdir uscos/aligns/aligns_raw
-mkdir uscos/aligns/align_trim
+mkdir uscos/aligns/aligns_trim
 mkdir uscos/aligns/reports
 for usco in `cat threshold_uscos.txt`
     do
